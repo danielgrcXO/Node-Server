@@ -134,6 +134,74 @@ app.get('/pacient/patientStatus', (req, res) => {
     });
 });
 
+/*=========================RUTA PACIENTES SIMULADOS=================================*/
+/*==================================================================================*/
+//Blood pressure paciente simulado.
+app.get('/pacient/bloodPressureSimulated', (req, res) => {
+    const sql = 'select * from VW_bloodPressureSimulated where Fecha = DATE_FORMAT(now(), "%y-%m-%d");';
+    connection.query(sql, (err, results) => {
+        if (err) throw err;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.json({message: 'No hay resultados'});
+        }
+    });
+});
+
+//heartRate paciente simulado.
+app.get('/pacient/heartRateSimulated', (req, res) => {
+    const sql = 'select * from VW_heartRateSimulated where Fecha = DATE_FORMAT(now(), "%y-%m-%d");';
+    connection.query(sql, (err, results) => {
+        if (err) throw err;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.json({message: 'No hay resultados'});
+        }
+    });
+});
+
+//temperatue paciente simulado.
+app.get('/pacient/temperatureSimulated', (req, res) => {
+    const sql = 'select * from VW_temperatureSimulated where Fecha = DATE_FORMAT(now(), "%y-%m-%d");';
+    connection.query(sql, (err, results) => {
+        if (err) throw err;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.json({message: 'No hay resultados'});
+        }
+    });
+});
+
+//oxygen paciente simulado.
+app.get('/pacient/oxygenSimulated', (req, res) => {
+    const sql = 'select * from VW_oxygenSimulated where Fecha = DATE_FORMAT(now(), "%y-%m-%d");';
+    connection.query(sql, (err, results) => {
+        if (err) throw err;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.json({message: 'No hay resultados'});
+        }
+    });
+});
+
+//patient status simulated
+app.get('/pacient/patientStatusSimulated', (req, res) => {
+    const sql = 'select * from  VW_patientStatusSimulated  where Fecha = DATE_FORMAT(now(), "%y-%m-%d");';
+    connection.query(sql, (err, results) => {
+        if (err) throw err;
+        if (results.length > 0) {
+            res.json(results);
+        } else {
+            res.json({message: 'No hay resultados'});
+        }
+    });
+});
+
+
 
 //CHECK connect 
 connection.connect(error => {
