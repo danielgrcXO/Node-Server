@@ -175,6 +175,19 @@ app.post('/patient/newPatient', function (req, res) {
         }
     })
 });
+
+app.get('/patient/lastPatient', function(req, res){
+    const sql = `SELECT patientStatus FROM medicalInfo ORDER BY id DESC LIMIT 1;`;
+    connection.query(sql, function(err, result){
+        if (err){
+            throw err;
+        } else {
+            res.json(result);
+        }
+    });
+});
+
+
 /*=========================RUTA PACIENTES SIMULADOS=================================*/
 /*==================================================================================*/
 //Blood pressure paciente simulado.
